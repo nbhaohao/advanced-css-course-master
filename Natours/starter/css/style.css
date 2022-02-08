@@ -1,3 +1,16 @@
+/*
+0 - 600px     Phone
+600 - 900px   Tablet portrait
+900 - 1200px  Tablet landscape
+[1200 - 1800] normal style
+1800px +      Big desktop
+
+$breakpoint argument choices:
+- phone
+- tab-port
+- tab-land
+- big-desktop
+*/
 @keyframes moveInLeft {
   0% {
     opacity: 0;
@@ -38,6 +51,21 @@ html {
   /* 10px / 16px, 16px is browser default font-size */
   font-size: 62.5%;
 }
+@media (max-width: 75em) {
+  html {
+    font-size: 56.25%;
+  }
+}
+@media (max-width: 56.25em) {
+  html {
+    font-size: 50%;
+  }
+}
+@media (min-width: 112.5em) {
+  html {
+    font-size: 75%;
+  }
+}
 
 *, *:after, *:before {
   margin: 0;
@@ -48,6 +76,12 @@ html {
 
 body {
   box-sizing: border-box;
+  padding: 3rem;
+}
+@media (max-width: 56.25em) {
+  body {
+    padding: 0;
+  }
 }
 
 body {
@@ -56,7 +90,6 @@ body {
   /*font-size: 16px;*/
   line-height: 1.7;
   color: #777;
-  padding: 3rem;
 }
 
 .heading-primary {
@@ -77,12 +110,23 @@ body {
   animation-timing-function: ease-out;
   */
 }
+@media (max-width: 37.5em) {
+  .heading-primary--main {
+    letter-spacing: 1rem;
+    font-size: 5rem;
+  }
+}
 .heading-primary--sub {
   display: block;
   font-size: 2rem;
   font-weight: 700;
   letter-spacing: 1.75rem;
   animation: moveInRight 1s;
+}
+@media (max-width: 37.5em) {
+  .heading-primary--sub {
+    letter-spacing: 0.5rem;
+  }
 }
 
 .heading-secondary {
@@ -95,6 +139,16 @@ body {
   color: transparent;
   letter-spacing: 0.2rem;
   transition: all 0.2s;
+}
+@media (max-width: 56.25em) {
+  .heading-secondary {
+    font-size: 3rem;
+  }
+}
+@media (max-width: 37.5em) {
+  .heading-secondary {
+    font-size: 2.5rem;
+  }
 }
 .heading-secondary:hover {
   transform: skewY(2deg) skewX(15deg) scale(1.1);
@@ -621,6 +675,17 @@ body {
 .row:not(:last-child) {
   margin-bottom: 8rem;
 }
+@media (max-width: 56.25em) {
+  .row:not(:last-child) {
+    margin-bottom: 6rem;
+  }
+}
+@media (max-width: 56.25em) {
+  .row {
+    max-width: 50rem;
+    padding: 0 3rem;
+  }
+}
 .row::after {
   content: "";
   display: table;
@@ -631,6 +696,17 @@ body {
 }
 .row [class^=col-]:not(:last-child) {
   margin-right: 6rem;
+}
+@media (max-width: 56.25em) {
+  .row [class^=col-]:not(:last-child) {
+    margin-right: 0;
+    margin-bottom: 6rem;
+  }
+}
+@media (max-width: 56.25em) {
+  .row [class^=col-] {
+    width: 100% !important;
+  }
 }
 .row .col-1-of-2 {
   width: calc((100% - 6rem) / 2);
@@ -660,6 +736,12 @@ body {
   -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
   clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
 }
+@media (max-width: 37.5em) {
+  .header {
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%);
+  }
+}
 .header__logo-box {
   position: absolute;
   top: 4rem;
@@ -682,6 +764,11 @@ body {
   font-size: 1.4rem;
   color: #f7f7f7;
 }
+@media (max-width: 56.25em) {
+  .footer {
+    padding: 8rem 0;
+  }
+}
 .footer__logo-box {
   text-align: center;
   margin-bottom: 8rem;
@@ -694,6 +781,12 @@ body {
   border-top: 1px solid #777;
   padding-top: 2rem;
   display: inline-block;
+}
+@media (max-width: 56.25em) {
+  .footer__navigation {
+    width: 100%;
+    text-align: center;
+  }
 }
 .footer__list {
   list-style: none;
@@ -726,6 +819,12 @@ body {
   width: 80%;
   float: right;
 }
+@media (max-width: 56.25em) {
+  .footer__copyright {
+    width: 100%;
+    float: none;
+  }
+}
 
 .navigation__checkbox {
   display: none;
@@ -743,6 +842,18 @@ body {
   text-align: center;
   cursor: pointer;
 }
+@media (max-width: 56.25em) {
+  .navigation__button {
+    top: 4rem;
+    right: 4rem;
+  }
+}
+@media (max-width: 37.5em) {
+  .navigation__button {
+    top: 3.5rem;
+    right: 3.5rem;
+  }
+}
 .navigation__background {
   height: 6rem;
   width: 6rem;
@@ -753,6 +864,18 @@ body {
   background-image: radial-gradient(#7ed56f, #28b485);
   z-index: 1000;
   transition: transform 0.8s cubic-bezier(0.86, 0, 0.07, 1);
+}
+@media (max-width: 56.25em) {
+  .navigation__background {
+    top: 4rem;
+    right: 4rem;
+  }
+}
+@media (max-width: 37.5em) {
+  .navigation__background {
+    top: 3.5rem;
+    right: 4rem;
+  }
 }
 .navigation__nav {
   height: 100vh;
